@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','role_id','institute_id','wallet_id','account'
     ];
 
     /**
@@ -26,4 +26,15 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    // Id error?
+     public function institute()
+    {
+        return $this->belongsTo('App\Institute');
+    }
+
+    public function role()
+    {
+        return $this->belongsTo('App\Role');
+    }
 }

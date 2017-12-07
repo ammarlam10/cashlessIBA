@@ -60,12 +60,18 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
+
+    // HAVE TO MAKE FRONT END
     protected function create(array $data)
     {
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'role_id' => $data['role_id'],
+            'wallet_id' => $data['wallet_id'],
+            'account' => $data['account'],
+            'institute_id' => $data['institute_id'],
         ]);
     }
 }
