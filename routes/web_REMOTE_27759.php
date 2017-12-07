@@ -10,9 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-use App\User;
-use App\Role;
-use App\Institute;
 
 Route::get('/', function () {
     return view('welcome');
@@ -21,20 +18,3 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-<<<<<<< HEAD
-
-Route::get('/test', function () {
-	Institute::create([
-            'name' => 'institue',
-            'area' => 'area',
-        ]);
-
-	// Role::create([
- //            'name' => 'test',
- //        ]);
-    
-
-    return Institute::all();
-});
-=======
->>>>>>> master
