@@ -37,4 +37,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Role');
     }
+
+    public function wallet()
+    {
+        return $this->belongsTo('App\Wallet');
+    }
 }

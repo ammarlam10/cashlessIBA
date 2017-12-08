@@ -24,6 +24,10 @@ class CreateUsersTable extends Migration
             $table->integer('wallet_id')->unsigned();
             $table->rememberToken();
             $table->timestamps();
+            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
+            $table->foreign('institute_id')->references('id')->on('institutes')->onDelete('cascade');
+            $table->foreign('wallet_id')->references('id')->on('wallets')->onDelete('cascade');
+        
         });
     }
 

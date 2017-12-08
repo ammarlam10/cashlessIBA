@@ -14,4 +14,8 @@ class Wallet extends Model
 
     	return $this->belongsToMany('App\Transaction');
     }
+
+    public function user(){
+    	return $this->belongsTo('App\User');
+    }
 }
