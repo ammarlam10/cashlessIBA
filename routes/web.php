@@ -21,13 +21,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-<<<<<<< HEAD
+
 
 Route::get('/test', function () {
-	Institute::create([
-            'name' => 'institue',
-            'area' => 'area',
-        ]);
+	// Institute::create([
+ //            'name' => 'institue',
+ //            'area' => 'area',
+ //        ]);
 
 	// Role::create([
  //            'name' => 'test',
@@ -36,5 +36,4 @@ Route::get('/test', function () {
 
     return Institute::all();
 });
-=======
->>>>>>> master
+

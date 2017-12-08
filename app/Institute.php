@@ -15,6 +15,6 @@ class Institute extends Model
      
 	public function user()
     {
-        return $this->hasMany('App\User');
+        return $this->hasMany('App\User','institute_id');
     }
 }
