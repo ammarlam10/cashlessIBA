@@ -62,6 +62,23 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="institute_id" class="col-md-4 control-label">Institute</label>
+
+                            <!-- <div class="col-md-6">
+                                <input id="institute_id" type="text" class="form-control" name="institute_id" required>
+                            </div> -->
+                            <select class="col-md-6" name="institute_id">
+                            @foreach($institutes as $institute)
+                                <option value="{{$institute->id}}">{{$institute->name}}</option>
+                            @endforeach
+                            </select>
+
+                        </div>
+
+
+                        
+
+                        <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
                                     Register

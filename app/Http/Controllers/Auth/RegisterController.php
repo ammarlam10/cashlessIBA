@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Institute;
+use App\Role;
+use App\Wallet;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -64,13 +67,21 @@ class RegisterController extends Controller
     // HAVE TO MAKE FRONT END
     protected function create(array $data)
     {
+
+        $wallet = Wallet::create([
+            'institute_id' => $data['institute_id'],
+            'balance' => 0,
+
+
+        ]);
+
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'role_id' => $data['role_id'],
-            'wallet_id' => $data['wallet_id'],
-            'account' => $data['account'],
+            'role_id' => 2,
+            'wallet_id' => $wallet->id,
             'institute_id' => $data['institute_id'],
         ]);
     }
