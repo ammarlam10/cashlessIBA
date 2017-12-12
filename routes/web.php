@@ -39,6 +39,7 @@ Route::post('admin/password/reset', 'Auth\ResetPasswordController@reset');
 Route::get('/home', 'HomeController@index')->name('home');
 
 
+
 Route::get('/test', function () {
 	// Institute::create([
  //            'name' => 'IBA',
@@ -65,4 +66,10 @@ Route::get('/test', function () {
 
     return User::all();
 });
+
+Route::resources([
+'institute' => 'instituteController',
+'roles' => 'rolesController'
+	]);
+
 
