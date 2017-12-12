@@ -23,17 +23,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::get('/test', function () {
-	// Institute::create([
- //            'name' => 'institue',
- //            'area' => 'area',
- //        ]);
-
-	// Role::create([
- //            'name' => 'test',
- //        ]);
-    
-
-    return Institute::all();
-});
+Route::resources([
+'institute' => 'instituteController',
+'roles' => 'rolesController'
+	]);
 
