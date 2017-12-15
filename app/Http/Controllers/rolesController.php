@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Role;
 
 class rolesController extends Controller
 {
@@ -13,8 +14,7 @@ class rolesController extends Controller
      */
     public function index()
     {
-        //
-    }
+        return Role::all();    }
 
     /**
      * Show the form for creating a new resource.
@@ -23,7 +23,7 @@ class rolesController extends Controller
      */
     public function create()
     {
-        //
+      return view('roles.add');
     }
 
     /**
@@ -34,8 +34,11 @@ class rolesController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        Role::create($request->all());
+        return redirect(route('roles.index'));
+
+
+            }
 
     /**
      * Display the specified resource.
