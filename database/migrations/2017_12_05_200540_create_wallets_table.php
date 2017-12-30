@@ -17,6 +17,7 @@ class CreateWalletsTable extends Migration
             $table->increments('id');
             $table->integer('balance');
             $table->integer('institute_id')->unsigned();
+            $table->foreign('institute_id')->references('id')->on('institutes')->onDelete('cascade');
             $table->timestamps();
         });
     }
