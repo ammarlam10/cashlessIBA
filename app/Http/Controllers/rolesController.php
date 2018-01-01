@@ -14,7 +14,11 @@ class rolesController extends Controller
      */
     public function index()
     {
-        return Role::all();    }
+        $roles = Role::all(); 
+        return view('roles.index',compact('roles'));
+
+
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -60,6 +64,8 @@ class rolesController extends Controller
     public function edit($id)
     {
         //
+        $role = Role::findOrFail($id);
+        return view('roles.edit',compact('role'));
     }
 
     /**
@@ -72,6 +78,10 @@ class rolesController extends Controller
     public function update(Request $request, $id)
     {
         //
+                $role = Role::findOrFail($id);
+        $role->update($request->all());
+        return redirect(route('roles.index'));
+
     }
 
     /**
@@ -83,5 +93,8 @@ class rolesController extends Controller
     public function destroy($id)
     {
         //
+        $role = Role::findOrFail($id);
+        $role->delete();
+        return redirect(route('roles.index'));
     }
 }

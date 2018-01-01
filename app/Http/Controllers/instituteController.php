@@ -16,9 +16,7 @@ class instituteController extends Controller
     {
         //
         $institutes = Institute::all();
-        foreach ($institutes as $institute) {
-            echo "<p>{{$institute->name}}</p>"; 
-        }
+        return view('institute.index',compact('institutes'));
     }
 
     /**
@@ -95,5 +93,8 @@ class instituteController extends Controller
     public function destroy($id)
     {
         //
+                $institute = Institute::findOrFail($id);
+        $institute->delete();
+        return redirect(route('institute.index'));
     }
 }

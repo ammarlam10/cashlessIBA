@@ -8,7 +8,7 @@
                 <div class="panel-heading">Edit a Role</div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('institute.update',$role->id)}}">
+                    <form class="form-horizontal" method="POST" action="{{ route('roles.update',$role->id)}}">
                     <input type="hidden" name="_method" value = "PUT">
                         {{ csrf_field() }}
 

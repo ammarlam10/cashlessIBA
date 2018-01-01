@@ -17,7 +17,8 @@ class transactionController extends Controller
     public function index()
     {
         //
-        echo "hello";
+        $transactions = Transaction::where('from_id',Auth::user()->wallet_id)->orwhere('to_id',Auth::user()->wallet_id)->get();
+            return view('transaction.index',compact('transactions'));
     }
 
     /**
