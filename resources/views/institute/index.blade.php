@@ -15,6 +15,7 @@
     <td>{{$i->id}}</td> 
     <td>{{$i->name}}</td>
     <td>{{$i->area}}</td>
+    <td>{{$i->credit_limit}}</td>
     <td><a href="{{route('institute.edit',$i->id)}}"><h1><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></h1></td>
         <td>
       <form action="{{ route('institute.destroy',$i->id)}}" method="POST">

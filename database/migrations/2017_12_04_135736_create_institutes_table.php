@@ -17,6 +17,7 @@ class CreateInstitutesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('area');
+            $table->integer('credit_limit');
             $table->timestamps();
         });
     }

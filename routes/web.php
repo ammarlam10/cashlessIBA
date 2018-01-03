@@ -69,6 +69,7 @@ Route::get('/test', function () {
 Route::get('/transaction','transactionController@index');
 Route::get('/transaction/create','transactionController@create');
 Route::post('/transaction','transactionController@store');
+Route::Post('/transactionI','transactionController@institute');
 
 Route::resources([
 'institute' => 'instituteController',

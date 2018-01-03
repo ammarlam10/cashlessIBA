@@ -39,6 +39,21 @@
                             </div>
                         </div>
 
+
+                        <div class="form-group{{ $errors->has('credit_limit') ? ' has-error' : '' }}">
+                            <label for="credit_limit" class="col-md-4 control-label">Credit limit</label>
+
+                            <div class="col-md-6">
+                                <input id="credit_limit" type="text" class="form-control" name="credit_limit" value="{{ old('credit_limit') }}" required>
+
+                                @if ($errors->has('credit_limit'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('credit_limit') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
