@@ -9,6 +9,7 @@
     <th>Institute ID</th>
     <th>Name</th> 
     <th>Area</th>
+    <th>Credit limit</th>
   </tr>
   @foreach($institutes as $i)
   <tr>

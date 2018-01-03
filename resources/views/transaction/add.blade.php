@@ -83,7 +83,7 @@ $(document).ready(function(){
                                     Transfer with wallet
                                 </button>
                                 <button id="transferI" value = "institute" class="btn btn-primary">
-                                Institute </button>
+                                Transfer with Institute </button>
 
                             </div>
                         </div>
