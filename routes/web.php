@@ -15,6 +15,7 @@ use App\Wallet;
 use App\Role;
 use App\Institute;
 use App\Account;
+use App\transaction;
 use Illuminate\Http\Request;
 
 
@@ -89,6 +90,13 @@ Route::post('/withdraw', function (Request $request) {
            	'type' =>  1,
             'user_id' => $user->id,
         ]);
+	Transaction::create([
+		'to_id'=>$user->id,
+		'from_id'=>$user->id,
+		'amount'=>$request->amount,
+		'description'=>"withdrawn from ".$request->account
+
+		]);
 
 	$user->wallet->balance = $user->wallet->balance + $request->amount;
 	$user->wallet->save();
@@ -111,6 +119,15 @@ Route::post('/deposit', function (Request $request) {
            	'type' =>  2,
             'user_id' => $user->id,
         ]);
+		Transaction::create([
+		'to_id'=>$user->id,
+		'from_id'=>$user->id,
+		'amount'=>$request->amount,
+		'description'=>"Diposited to ".$request->account
+
+		]);
+
+
 	// if no bal send error
 	$user->wallet->balance = $user->wallet->balance - $request->amount;
 	$user->wallet->save();
