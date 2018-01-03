@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Institute extends Model
 {
 	protected $fillable = [
-        'name','area'
+        'name','area','credit_limit'
     ];
      protected $table = 'institutes';
 

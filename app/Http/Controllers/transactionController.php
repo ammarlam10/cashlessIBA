@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Wallet;
 use App\Transaction;
+use App\Institute;
+
 class transactionController extends Controller
 {
     /**
@@ -53,7 +55,8 @@ class transactionController extends Controller
              Transaction::create([
                  'from_id'=>Auth::user()->wallet_id,
                  'to_id'=>$request->to_id,
-                 'amount'=>$amount
+                 'amount'=>$amount,
+                 'description'=>$request->description
 
                 ]);
              $wallet = Wallet::findOrFail(Auth::user()->wallet_id);
@@ -69,6 +72,39 @@ class transactionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+public function institute(Request $request)
+    {
+         return $request;
+        $balance = Wallet::findOrFail(Auth::user()->wallet_id)->institute_balance;
+
+        $rBalance = Wallet::findOrFail($request->to_id)->balance;
+        return '1';
+
+        $amount = (int)$request->amount;
+        if(($balance - $amount)<(-1)*Institute::findOrFail(Wallet::findOrFail(Auth::user()->wallet_id)->institute_id)){
+         $messages = "you have insufficent balance in your account to proceed with this transaction";
+         echo '2';
+         return redirect('transaction/create')->withErrors($messages);
+         }
+         else{
+            echo '3';
+             Transaction::create([
+                 'from_id'=>Auth::user()->wallet_id,
+                 'to_id'=>$request->to_id,
+                 'amount'=>$amount,
+                 'description'=>$request->description
+
+                ]);
+             echo '4';
+             $wallet = Wallet::findOrFail(Auth::user()->wallet_id);
+             $wallet->update(['institute_balance'=>($balance-$amount)]);
+             Wallet::findOrFail($request->to_id)->update(['balance'=>($rBalance+$amount)]);
+             echo '5';
+             return redirect('transaction');
+         }
+    }
+
+
     public function show($id)
     {
         //

@@ -10,6 +10,7 @@
     <th>sender</th> 
     <th>Receipent</th>
     <th>Amount(PKR)</th>
+    <th>Description</th>
     <th>Time</th>
   </tr>
   @foreach($transactions as $t)
@@ -18,6 +19,7 @@
     <td>{{App\User::findOrFail($t->from_id)->name}}</td> 
     <td>{{App\User::findOrFail($t->to_id)->name}}</td>
     <td>{{$t->amount}}</td>
+    <td>{{$t->description}}</td>
     <td>{{$t->created_at}}</td>
   </tr>
   @endforeach

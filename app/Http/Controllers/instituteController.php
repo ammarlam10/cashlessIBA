@@ -39,7 +39,12 @@ class instituteController extends Controller
     public function store(Request $request)
     {
         //
-        Institute::create($request->all());
+        Institute::create([
+            'name'=>$request->name,
+            'area'=>$request->area,
+            'credit_limit'=>(int)$request->credit_limit
+
+            ]);
         return redirect(route('institute.index'));
     }
 
@@ -80,7 +85,12 @@ class instituteController extends Controller
         //
 
         $institute = Institute::findOrFail($id);
-        $institute->update($request->all());
+        $institute->update([
+            'name'=>$request->name,
+            'area'=>$request->area,
+            'credit_limit'=>(int)$request->credit_limit
+
+            ]);
         return redirect(route('institute.index'));
     }
 

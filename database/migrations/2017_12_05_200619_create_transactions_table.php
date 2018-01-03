@@ -18,6 +18,7 @@ class CreateTransactionsTable extends Migration
             $table->integer('from_id')->unsigned();
             $table->integer('to_id')->unsigned();
             $table->integer('amount');
+            $table->string('description');
             $table->timestamps();
             $table->foreign('from_id')->references('id')->on('wallets')->onDelete('cascade');
             $table->foreign('to_id')->references('id')->on('wallets')->onDelete('cascade');
