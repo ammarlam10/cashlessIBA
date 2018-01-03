@@ -74,20 +74,19 @@ class transactionController extends Controller
      */
 public function institute(Request $request)
     {
-         return $request;
         $balance = Wallet::findOrFail(Auth::user()->wallet_id)->institute_balance;
 
         $rBalance = Wallet::findOrFail($request->to_id)->balance;
-        return '1';
-
+        
         $amount = (int)$request->amount;
-        if(($balance - $amount)<(-1)*Institute::findOrFail(Wallet::findOrFail(Auth::user()->wallet_id)->institute_id)){
+//return "hell";
+        if(($balance - $amount)<(-1)*(Institute::findOrFail(Auth::user()->institute_id)->credit_limit)){
+
          $messages = "you have insufficent balance in your account to proceed with this transaction";
-         echo '2';
          return redirect('transaction/create')->withErrors($messages);
          }
          else{
-            echo '3';
+
              Transaction::create([
                  'from_id'=>Auth::user()->wallet_id,
                  'to_id'=>$request->to_id,
@@ -95,12 +94,10 @@ public function institute(Request $request)
                  'description'=>$request->description
 
                 ]);
-             echo '4';
              $wallet = Wallet::findOrFail(Auth::user()->wallet_id);
              $wallet->update(['institute_balance'=>($balance-$amount)]);
              Wallet::findOrFail($request->to_id)->update(['balance'=>($rBalance+$amount)]);
-             echo '5';
-             return redirect('transaction');
+             return redirect('/transaction');
          }
     }
 
