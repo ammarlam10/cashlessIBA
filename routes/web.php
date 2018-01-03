@@ -14,6 +14,10 @@ use App\User;
 use App\Wallet;
 use App\Role;
 use App\Institute;
+use App\Account;
+use Illuminate\Http\Request;
+
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -69,6 +73,51 @@ Route::get('/test', function () {
 Route::get('/transaction','transactionController@index');
 Route::get('/transaction/create','transactionController@create');
 Route::post('/transaction','transactionController@store');
+
+
+//   WITHDRAW
+Route::get('/withdraw', function () {
+    
+    return view('account.withdraw');
+});
+Route::post('/withdraw', function (Request $request) {
+	$user = Auth::user();
+	Account::create([
+            'account' => $request->account,
+           	'amount' => $request->amount,
+           	'type' =>  1,
+            'user_id' => $user->id,
+        ]);
+
+	$user->wallet->balance = $user->wallet->balance + $request->amount;
+	$user->wallet->save();
+	return redirect('home');
+	
+});
+
+//	DEPOSIT
+
+Route::get('/deposit', function () {
+    
+    return view('account.deposit');
+});
+
+Route::post('/deposit', function (Request $request) {
+	$user = Auth::user();
+	Account::create([
+            'account' => $request->account,
+           	'amount' => $request->amount,
+           	'type' =>  2,
+            'user_id' => $user->id,
+        ]);
+	// if no bal send error
+	$user->wallet->balance = $user->wallet->balance - $request->amount;
+	$user->wallet->save();
+	return $user->wallet;
+	
+});
+
+
 
 Route::resources([
 'institute' => 'instituteController',
