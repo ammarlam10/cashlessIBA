@@ -138,8 +138,8 @@ Route::post('/deposit', function (Request $request) {
 
 
 Route::resources([
-'institute' => 'instituteController',
-'roles' => 'rolesController'
+'admin/institute' => 'instituteController',
+'admin/roles' => 'rolesController'
 	]);
 
 

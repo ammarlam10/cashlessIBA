@@ -39,7 +39,10 @@ $(document).ready(function(){
                             </div> -->
                             <select class="col-md-6" name="to_id">
                             @foreach($user as $usr)
+                                @if($usr->id == Auth::user()->id)
+                                @else
                                 <option value="{{$usr->wallet_id}}">{{$usr->name}}</option>
+                                @endif
                             @endforeach
                             </select>
 
