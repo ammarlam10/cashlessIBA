@@ -12,6 +12,7 @@
     <th>Amount(PKR)</th>
     <th>Description</th>
     <th>Time</th>
+    
   </tr>
   @foreach($transactions as $t)
   <tr>
@@ -26,6 +27,7 @@
     <td>{{$t->amount}}</td>
     <td>{{$t->description}}</td>
     <td>{{$t->created_at}}</td>
+
   </tr>
   @endforeach
   </table>
