@@ -377,7 +377,7 @@ form > .row {
               </li>
 
               <li class="null">
-                <a >
+                <a href="/profile">
                   <span class="glyphicon glyphicon-cog"></span>
                   <span class="nav-label"> Settings</span>
                 </a>

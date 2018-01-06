@@ -30,7 +30,7 @@ class transactionController extends Controller
         $due = Wallet::find(Auth::user()->wallet_id)->institute_balance;
         // return $due;
         // return $cash;
-            return view('transaction.index',compact('transactions','cash'));
+            return view('transaction.index',compact('transactions','cash','due'));
     }
 
     /**

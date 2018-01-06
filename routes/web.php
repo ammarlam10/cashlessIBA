@@ -164,6 +164,24 @@ Route::get('/graphs',function(){
 	return view('graph');
 });
 
+Route::get('/profile',function(){
+$user = Auth::user();
+return view('profile',compact('user'));
+
+});
+
+Route::PUT('/profile',function(Request $request){
+
+	$user = Auth::user();
+	$user->update([
+		'name'=>$request->name,
+		'email'=>$request->email,
+		'password'=>bcrypt($request->password)
+
+	]);
+	return redirect('/transaction');
+});
+
 Route::resources([
 'admin/institute' => 'instituteController',
 'admin/roles' => 'rolesController',

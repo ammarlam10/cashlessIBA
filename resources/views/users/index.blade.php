@@ -2,7 +2,13 @@
 
 @section('content')
 
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Create a Role</div>
 
+                <div class="panel-body">
   <!-- Table -->
   <table class="table table-striped">
       <tr>
@@ -38,6 +44,12 @@
   @endforeach
   </table>
    <a href="{{route('users.create')}}"><button type="button" class="btn btn-primary btn-lg">Add a new user</button></a>
+
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
 
 
 @endsection

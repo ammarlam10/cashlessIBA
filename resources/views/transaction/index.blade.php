@@ -9,7 +9,7 @@
                     <ul>
                         <h3 class="col-md-offset-4">Transaction History</h4>
                         <li><h4>Cash in Wallet: Rs. {{$cash->balance}} </h4></li>
-                        <li><h4>Institute Due: Rs.  </h4> </li>
+                        <li><h4>Institute Balance: Rs. {{$due}} </h4> </li>
                         <h4>Recent transactions:</h4>
 
                     </ul>

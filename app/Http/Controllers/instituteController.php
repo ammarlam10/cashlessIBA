@@ -44,6 +44,11 @@ class instituteController extends Controller
      */
     public function store(Request $request)
     {
+    $request->validate([
+    'title' => 'required|unique:posts|max:255',
+    'author.name' => 'required',
+    'author.description' => 'required',
+    ]);
         //
         Institute::create([
             'name'=>$request->name,
