@@ -45,6 +45,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 
+
 Route::get('/test', function () {
 	// Institute::create([
  //            'name' => 'IBA',
@@ -135,11 +136,15 @@ Route::post('/deposit', function (Request $request) {
 	
 });
 
+Route::get('/graphs',function(){
 
+	return view('graph');
+});
 
 Route::resources([
 'admin/institute' => 'instituteController',
-'admin/roles' => 'rolesController'
+'admin/roles' => 'rolesController',
+'admin/users'=>'userController'
 	]);
 
 
