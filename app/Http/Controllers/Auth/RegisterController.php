@@ -68,6 +68,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
 
+
         $wallet = Wallet::create([
             'institute_id' => $data['institute_id'],
             'balance' => 0,
@@ -77,7 +78,7 @@ class RegisterController extends Controller
         ]);
 
 
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
@@ -85,5 +86,6 @@ class RegisterController extends Controller
             'wallet_id' => $wallet->id,
             'institute_id' => $data['institute_id'],
         ]);
+        // $user->wallet->institute_balance = $user->wallet->
     }
 }

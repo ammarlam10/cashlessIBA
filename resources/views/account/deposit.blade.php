@@ -1,13 +1,15 @@
-@extends('layouts.app')
+@extends('layouts.user')
 
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Deposit to account</div>
+        <div class="col-md-10 col-md-offset-1 gradient">
+            <h3 class="col-md-offset-4">Deposit to Bank</h4>
+            <br>
+            <!-- <div class="panel panel-default"> -->
+                <!-- <div class="panel-heading">Deposit to account</div> -->
 
-                <div class="panel-body">
+                <!-- <div class="panel-body"> -->
                     <form class="form-horizontal" method="POST" action="/deposit">
                         {{ csrf_field() }}
 
@@ -37,9 +39,9 @@
                             </div>
                         </div>
                     </form>
-                </div>
+                <!-- </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>
 @endsection

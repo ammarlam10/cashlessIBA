@@ -41,7 +41,7 @@ Route::get('admin/password/reset/{token}', 'Auth\ResetPasswordController@showRes
 Route::post('admin/password/reset', 'Auth\ResetPasswordController@reset');
 
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('admin');
 
 
 
