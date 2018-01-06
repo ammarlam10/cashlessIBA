@@ -90,7 +90,8 @@ public function institute(Request $request)
         
         $amount = (int)$request->amount;
 //return "hell";
-        if(($balance - $amount)<(-1)*(Institute::findOrFail(Auth::user()->institute_id)->credit_limit)){
+        //(-1)*(Institute::findOrFail(Auth::user()->institute_id)->credit_limit)
+        if(($balance - $amount)<0){
 
          $messages = "you have insufficent balance in your account to proceed with this transaction";
          return redirect('transaction/create')->withErrors($messages);

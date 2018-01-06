@@ -72,7 +72,7 @@ class RegisterController extends Controller
         $wallet = Wallet::create([
             'institute_id' => $data['institute_id'],
             'balance' => 0,
-            'institute_balance'=> 0
+            'institute_balance'=> Institute::find($data['institute_id'])->credit_limit
 
 
         ]);

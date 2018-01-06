@@ -49,6 +49,7 @@ return view('transaction.shop',compact('$user'));
 
 });
 
+
 Route::get('/test', function () {
 	// Role::create([
  //            'name' => 'cafe',
@@ -158,11 +159,15 @@ Route::post('/deposit', function (Request $request) {
 	
 });
 
+Route::get('/graphs',function(){
 
+	return view('graph');
+});
 
 Route::resources([
 'admin/institute' => 'instituteController',
-'admin/roles' => 'rolesController'
+'admin/roles' => 'rolesController',
+'admin/users'=>'userController'
 	]);
 
 
