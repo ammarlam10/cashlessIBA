@@ -43,9 +43,32 @@ Route::post('admin/password/reset', 'Auth\ResetPasswordController@reset');
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('admin');
 
+Route::get('/shop', function () {
+$user = User::find(3);  //shaukat bhai cafe guy
+return view('transaction.shop',compact('$user'));
 
+});
 
 Route::get('/test', function () {
+	// Role::create([
+ //            'name' => 'cafe',
+ //        ]);
+
+	// Wallet::create([
+
+	// 	'balance'=>10000,
+	// 	'institute_balance'=>0,
+	// 	'institute_id'=>1]);
+
+	// User::create([
+	// 	'name'=>'shaukat bhai',
+	// 	'email'=>'cafe@gmail.com',
+	// 	'password'=>bcrypt('qwerty'),
+	// 	'role_id'=>3,
+	// 	'wallet_id'=>2,
+	// 	'institute_id'=>1
+
+	// ]);
 	// Institute::create([
  //            'name' => 'IBA',
  //            'area' => 'KU',
@@ -69,7 +92,7 @@ Route::get('/test', function () {
  //        ]);
 
 
-    return User::all();
+    // return User::all();
 });
 Route::get('/transaction','transactionController@index');
 Route::get('/transaction/create','transactionController@create');
