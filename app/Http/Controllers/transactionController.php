@@ -11,6 +11,11 @@ use App\Institute;
 
 class transactionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('permission');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -20,7 +25,12 @@ class transactionController extends Controller
     {
         //
         $transactions = Transaction::where('from_id',Auth::user()->wallet_id)->orwhere('to_id',Auth::user()->wallet_id)->get();
-            return view('transaction.index',compact('transactions'));
+        $cash = Auth::user()->wallet;
+
+        $due = Wallet::find(Auth::user()->wallet_id)->institute_balance;
+        // return $due;
+        // return $cash;
+            return view('transaction.index',compact('transactions','cash'));
     }
 
     /**

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.user')
 
 
 @section('content')
@@ -20,11 +20,13 @@ $(document).ready(function(){
 
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
+        <div class="col-md-10 col-md-offset-1 gradient">
+            <h3 class="col-md-offset-6">Transfer</h4>
+            <br>
+            <!-- <div class="panel panel-default">
                 <div class="panel-heading">Make transaction</div>
 
-                <div class="panel-body">
+                <div class="panel-body"> -->
                     <form id="fuck"class="form-horizontal" method="POST" action="">
                         {{ csrf_field() }}
 @if ($errors->any())
@@ -37,7 +39,7 @@ $(document).ready(function(){
                             <!-- <div class="col-md-6">
                                 <input id="institute_id" type="text" class="form-control" name="institute_id" required>
                             </div> -->
-                            <select class="col-md-6" name="to_id">
+                            <select class="col-md-offset-4 form-control" style="width:auto;" name="to_id">
                             @foreach($user as $usr)
                                 @if($usr->id == Auth::user()->id)
                                 @else
@@ -45,6 +47,7 @@ $(document).ready(function(){
                                 @endif
                             @endforeach
                             </select>
+                            <br>
 
                         </div>
 
@@ -91,12 +94,6 @@ $(document).ready(function(){
                             </div>
                         </div>
                     </form>
-
-
-
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 
